@@ -1,0 +1,15 @@
+--- testng-eclipse-plugin/src/main/org/testng/eclipse/launch/TestNGLaunchConfigurationDelegate.java.orig	2016-04-25 18:00:23.284951717 +0100
++++ testng-eclipse-plugin/src/main/org/testng/eclipse/launch/TestNGLaunchConfigurationDelegate.java	2016-04-25 18:01:44.976871375 +0100
+@@ -330,9 +330,10 @@
+   public String[] getClasspath(ILaunchConfiguration configuration)
+       throws CoreException {
+     String[] cp = super.getClasspath(configuration);
+-    String[] allCp = new String[cp.length + 1];
++    String[] allCp = new String[cp.length + 2];
+     allCp[0] = getBundleFile("lib/testng-remote.jar").toOSString();
+-    System.arraycopy(cp, 0, allCp, 1, cp.length);
++    allCp[1] = getBundleFile("lib/google-gson_gson.jar").toOSString();
++    System.arraycopy(cp, 0, allCp, 2, cp.length);
+ 
+     return allCp;
+   }
